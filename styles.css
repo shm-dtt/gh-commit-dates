@@ -1,0 +1,144 @@
+/* GitHub Repo Dates Extension Styles */
+.repo-dates-extension {
+  background: #f6f8fa;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  padding: 16px;
+  margin: 16px 0;
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .repo-dates-extension {
+    background: #21262d;
+    border-color: #30363d;
+    color: #e6edf3;
+  }
+}
+
+/* GitHub dark theme support */
+[data-color-mode="dark"] .repo-dates-extension,
+[data-dark-theme="dark"] .repo-dates-extension {
+  background: #21262d;
+  border-color: #30363d;
+  color: #e6edf3;
+}
+
+.repo-date-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  min-width: 0;
+  flex: 1;
+  min-width: 200px;
+}
+
+.repo-date-item.error {
+  color: #d1242f;
+  justify-content: center;
+  flex: 1;
+  min-width: 100%;
+}
+
+[data-color-mode="dark"] .repo-date-item.error,
+[data-dark-theme="dark"] .repo-date-item.error {
+  color: #f85149;
+}
+
+.repo-date-icon {
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.repo-date-label {
+  font-weight: 600;
+  color: #656d76;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+[data-color-mode="dark"] .repo-date-label,
+[data-dark-theme="dark"] .repo-date-label {
+  color: #8b949e;
+}
+
+.repo-date-value {
+  color: #1f2328;
+  font-weight: 500;
+  cursor: help;
+  flex-shrink: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+[data-color-mode="dark"] .repo-date-value,
+[data-dark-theme="dark"] .repo-date-value {
+  color: #e6edf3;
+}
+
+.repo-date-value:hover {
+  text-decoration: underline;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .repo-dates-extension {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .repo-date-item {
+    min-width: 100%;
+    justify-content: space-between;
+  }
+  
+  .repo-date-label {
+    white-space: normal;
+  }
+}
+
+/* Animation for when the extension loads */
+.repo-dates-extension {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Loading state (optional) */
+.repo-dates-extension.loading {
+  opacity: 0.6;
+}
+
+.repo-dates-extension.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid #d0d7de;
+  border-top-color: #0969da;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
